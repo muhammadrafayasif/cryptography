@@ -48,18 +48,14 @@ class RSA : public CipherInterface {
                 int temp = t1;
                 t1 = t2;
                 t2 = temp - quotient * t2;
-
                 temp = r1;
                 r1 = r2;
                 r2 = temp % r2;
             }
 
-            if (r1 > 1) {
-                return -1;
-            }
-            if (t1 < 0) {
-                t1 = t1 + phi;
-            }
+            if (r1 > 1) return -1;
+            if (t1 < 0) t1 = t1 + phi;
+            
             return t1;
         }
 
